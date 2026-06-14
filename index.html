@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Super Elote | Antojitos Mexicanos · Plano, TX</title>
+  <meta name="description" content="¡Exquisitos Sabores! El mejor elote y antojitos mexicanos en Plano, TX. Elotes, aguas frescas, smoothies y postres. Abierto todos los días 11am–10pm.">
+  <meta property="og:title" content="El Super Elote | Plano, TX">
+  <meta property="og:description" content="¡Exquisitos Sabores! Antojitos mexicanos en Plano, TX.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,900&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --bg:       #16060A;
+      --bg-mid:   #220D11;
+      --bg-card:  #2E1118;
+      --bg-lift:  #3C1820;
+
+      --red:      #D41E1E;
+      --red-d:    #AA1515;
+      --red-glow: rgba(212,30,30,.22);
+
+      --yellow:   #F5C200;
+      --yellow-d: #CCA000;
+      --yellow-lt:#FFF0A0;
+
+      --green:    #279018;
+      --green-d:  #1C6C12;
+
+      --cream:    #FFF8E6;
+      --cream-d:  #F0E4C8;
+      --espresso: #1A0505;
+      --muted:    #6A3535;
+      --white:    #FEFCF5;
+
+      --ff-d:'Fraunces',Georgia,serif;
+      --ff-b:'DM Sans',system-ui,sans-serif;
+
+      --t-xs:   clamp(.75rem,  1.5vw,  .875rem);
+      --t-sm:   clamp(.875rem, 1.8vw,  1rem);
+      --t-base: clamp(1rem,    2vw,    1.125rem);
+      --t-lg:   clamp(1.2rem,  2.5vw,  1.4rem);
+      --t-xl:   clamp(1.5rem,  3.5vw,  2rem);
+      --t-2xl:  clamp(2rem,    5vw,    3.25rem);
+      --t-hero: clamp(3rem,    9vw,    7rem);
+
+      --sp-sm:1rem; --sp-md:1.5rem; --sp-lg:2.5rem;
+      --sp-xl:4rem; --sp-2xl:7rem;
+
+      --rad-sm:6px; --rad-md:12px; --rad-lg:20px;
+      --rad-xl:28px; --rad-full:9999px;
+
+      --ease:250ms cubic-bezier(.4,0,.2,1);
+      --ease-slow:420ms cubic-bezier(.4,0,.2,1);
+    }
+
+    /* ── RESET ──────────────────────────────────────────── */
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+    body{font-family:var(--ff-b);background:var(--bg);color:var(--white);overflow-x:hidden;line-height:1.6}
+    img{display:block;max-width:100%}
+    a{text-decoration:none;color:inherit}
+    button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
+    ul,ol{list-style:none}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+    /* ── SKIP LINK ──────────────────────────────────────── */
+    .skip{position:absolute;transform:translateY(-100%);padding:.5rem 1rem;background:var(--yellow);color:var(--espresso);font-weight:700;z-index:9999;transition:transform var(--ease)}
+    .skip:focus{transform:translateY(0)}
+
+    /* ── UTILS ──────────────────────────────────────────── */
+    .wrap{width:100%;max-width:1220px;margin-inline:auto;padding-inline:clamp(1rem,5vw,2.5rem)}
+    .tag{display:inline-flex;align-items:center;gap:.5rem;font-size:var(--t-xs);font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--yellow);padding:.3rem .85rem;border:1px solid rgba(245,194,0,.35);border-radius:var(--rad-full)}
+    .tag--light{color:var(--red);border-color:rgba(212,30,30,.35)}
+
+    /* ── ANIMATIONS ─────────────────────────────────────── */
+    [data-a]{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+    [data-a].on{opacity:1;transform:translateY(0)}
+    [data-a][data-d="1"]{transition-delay:80ms}
+    [data-a][data-d="2"]{transition-delay:160ms}
+    [data-a][data-d="3"]{transition-delay:240ms}
+    [data-a][data-d="4"]{transition-delay:320ms}
+
+    /* ── BUTTONS ────────────────────────────────────────── */
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.875rem 2rem;border-radius:var(--rad-full);font-size:var(--t-sm);font-weight:700;letter-spacing:.03em;transition:all var(--ease);border:2px solid transparent;cursor:pointer}
+    .btn-yellow{background:var(--yellow);color:var(--espresso)}
+    .btn-yellow:hover{background:var(--yellow-d);transform:translateY(-2px);box-shadow:0 8px 28px rgba(245,194,0,.35)}
+    .btn-red{background:var(--red);color:var(--white)}
+    .btn-red:hover{background:var(--red-d);transform:translateY(-2px);box-shadow:0 8px 28px rgba(212,30,30,.35)}
+    .btn-outline{background:transparent;color:var(--white);border-color:rgba(255,255,255,.4)}
+    .btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,.07)}
+    .btn-outline-dark{background:transparent;color:var(--espresso);border-color:rgba(28,5,5,.25)}
+    .btn-outline-dark:hover{background:var(--red);color:var(--white);border-color:var(--red)}
+
+    /* ══════════════════════════════════════════════════════
+       NAVBAR
+    ══════════════════════════════════════════════════════ */
+    .nav{position:fixed;inset:0 0 auto;z-index:100;padding:1rem 0;transition:all var(--ease-slow)}
+    .nav.scrolled{background:rgba(22,6,10,.96);backdrop-filter:blur(18px);box-shadow:0 2px 24px rgba(0,0,0,.5)}
+    .nav__in{display:flex;align-items:center;justify-content:space-between;gap:1.5rem}
+    .nav__logo{display:flex;align-items:center;gap:.6rem;flex-shrink:0}
+    .nav__logo-img{width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(245,194,0,.4))}
+    .nav__logo-text{font-family:var(--ff-d);font-weight:900;font-size:1.05rem;line-height:1.1}
+    .nav__logo-text span{color:var(--yellow)}
+    .nav__links{display:flex;align-items:center;gap:2.5rem}
+    .nav__links a{font-size:var(--t-sm);font-weight:500;color:rgba(255,255,255,.78);transition:color var(--ease);position:relative}
+    .nav__links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:var(--yellow);transition:width var(--ease)}
+    .nav__links a:hover{color:var(--yellow)}
+    .nav__links a:hover::after{width:100%}
+    .nav__actions{display:flex;align-items:center;gap:.75rem;flex-shrink:0}
+    .cart-trigger{display:flex;align-items:center;gap:.5rem;padding:.55rem 1.1rem;background:rgba(245,194,0,.1);border:1px solid rgba(245,194,0,.25);border-radius:var(--rad-full);font-size:var(--t-sm);font-weight:600;transition:all var(--ease)}
+    .cart-trigger:hover{background:rgba(245,194,0,.2)}
+    .cart-badge{background:var(--red);color:var(--white);font-size:.65rem;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;min-width:18px}
+    .hamburger{display:none;flex-direction:column;gap:5px;padding:.5rem;z-index:200}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all var(--ease)}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+    @media(max-width:768px){
+      /* Disable backdrop-filter when mobile menu is open to prevent trapping fixed position child */
+      .nav.open {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+      }
+      .nav__logo {
+        position: relative;
+        z-index: 100;
+      }
+      .nav__links {
+        display: flex;
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100vh;
+        height: 100svh;
+        background: var(--bg);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2.5rem;
+        z-index: 99;
+        transform: translateY(-100%);
+        visibility: hidden;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .nav__links.open {
+        transform: translateY(0);
+        visibility: visible;
+      }
+      .nav__links a{font-size:1.6rem}
+      .hamburger{display:flex}
+      .nav__actions .btn{display:none}
+
+      /* Hero section mobile adjustments for premium look and text readability */
+      .hero {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding-top: 5rem;
+      }
+      .hero__content {
+        padding: 5rem 0 2rem;
+        z-index: 3;
+      }
+      .hero__eyebrow {
+        justify-content: center;
+      }
+      .hero__eyebrow::before {
+        display: none;
+      }
+      .hero__actions {
+        justify-content: center;
+      }
+      .hero__info {
+        justify-content: center;
+        gap: 1rem;
+      }
+      .hero__mascot {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin: 0 auto 2rem;
+        width: 160px;
+        z-index: 2;
+      }
+      .hero__scroll {
+        display: none;
+      }
+    }
+
+    /* ══════════════════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════════════════ */
+    .hero{position:relative;min-height:100svh;display:flex;align-items:center;overflow:hidden}
+    .hero__bg{position:absolute;inset:0;
+      background-image:url('hero.jpg');
+      background-size:cover;background-position:center top;transform:scale(1.04)}
+    .hero__bg::after{content:'';position:absolute;inset:0;
+      background:linear-gradient(135deg,rgba(22,6,10,.92) 0%,rgba(22,6,10,.6) 55%,rgba(22,6,10,.82) 100%)}
+    /* decorative sunburst behind mascot */
+    .hero__sunburst{position:absolute;right:-5%;top:50%;transform:translateY(-50%);width:clamp(300px,45vw,680px);height:clamp(300px,45vw,680px);
+      background:radial-gradient(circle,rgba(245,194,0,.18) 0%,rgba(212,30,30,.08) 40%,transparent 70%);
+      border-radius:50%;pointer-events:none;z-index:1}
+    .hero__content{position:relative;z-index:3;padding:8rem 0 5rem;max-width:700px}
+    .hero__eyebrow{display:inline-flex;align-items:center;gap:.75rem;font-size:var(--t-xs);font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--yellow);margin-bottom:1.5rem}
+    .hero__eyebrow::before{content:'';width:36px;height:2px;background:var(--yellow)}
+    .hero__title{font-family:var(--ff-d);font-size:var(--t-hero);font-weight:900;line-height:1.0;letter-spacing:-.025em;margin-bottom:1.5rem}
+    .hero__title em{font-style:italic;color:var(--yellow)}
+    .hero__title strong{color:var(--red)}
+    .hero__sub{font-size:var(--t-lg);color:rgba(255,255,255,.72);line-height:1.65;max-width:520px;margin-bottom:2.5rem}
+    .hero__actions{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+    .hero__info{display:flex;flex-wrap:wrap;gap:1.5rem;margin-top:3rem;padding-top:2.5rem;border-top:1px solid rgba(245,194,0,.2)}
+    .hero__info-item{display:flex;align-items:center;gap:.6rem;font-size:var(--t-xs);color:rgba(255,255,255,.6)}
+    .hero__info-item strong{color:var(--yellow);font-weight:600}
+
+    /* mascot floating in hero */
+    .hero__mascot{position:absolute;right:clamp(1rem,6vw,6rem);bottom:0;z-index:2;width:clamp(200px,28vw,420px);pointer-events:none;filter:drop-shadow(0 8px 32px rgba(245,194,0,.25))}
+
+    .hero__scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);z-index:3}
+    .hero__scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,rgba(245,194,0,.5),transparent);animation:sline 2s ease-in-out infinite}
+    @keyframes sline{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+    /* ══════════════════════════════════════════════════════
+       RED BANNER
+    ══════════════════════════════════════════════════════ */
+    .red-banner{background:var(--red);padding:1.1rem 0;overflow:hidden;position:relative}
+    .red-banner::before,.red-banner::after{content:'';position:absolute;top:0;bottom:0;width:3px;background:var(--yellow)}
+    .red-banner::before{left:0}.red-banner::after{right:0}
+    .ticker__track{display:flex;gap:3.5rem;animation:marquee 20s linear infinite;white-space:nowrap}
+    .ticker__item{display:flex;align-items:center;gap:.6rem;font-size:.82rem;font-weight:600;color:rgba(255,255,255,.9);flex-shrink:0}
+    .ticker__item strong{color:var(--yellow)}
+    .ticker__sep{color:rgba(255,255,255,.35);flex-shrink:0;font-size:1.1rem}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* ══════════════════════════════════════════════════════
+       CATEGORIES
+    ══════════════════════════════════════════════════════ */
+    .cats{background:var(--bg-mid);padding:2.5rem 0}
+    .cats__grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid rgba(245,194,0,.15);border-radius:var(--rad-lg);overflow:hidden}
+    .cat-item{padding:2rem 1.75rem;border-right:1px solid rgba(245,194,0,.1);cursor:pointer;transition:all var(--ease);text-align:center;display:block}
+    .cat-item:last-child{border-right:none}
+    .cat-item:hover{background:rgba(245,194,0,.07)}
+    .cat-item__icon{font-size:2.5rem;margin-bottom:.75rem;line-height:1}
+    .cat-item__name{font-family:var(--ff-d);font-size:1.1rem;font-weight:700;margin-bottom:.3rem;color:var(--yellow)}
+    .cat-item__desc{font-size:.75rem;color:rgba(255,255,255,.45);line-height:1.5}
+    @media(max-width:600px){.cats__grid{grid-template-columns:1fr}.cat-item{border-right:none;border-bottom:1px solid rgba(245,194,0,.1)}.cat-item:last-child{border-bottom:none}}
+
+    /* ══════════════════════════════════════════════════════
+       FEATURED / ABOUT THE PLACE
+    ══════════════════════════════════════════════════════ */
+    .featured{padding:var(--sp-2xl) 0;background:var(--cream);color:var(--espresso)}
+    .featured__in{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+    .featured__title{font-family:var(--ff-d);font-size:var(--t-2xl);font-weight:900;line-height:1.15;letter-spacing:-.025em;margin:1.25rem 0 1.5rem}
+    .featured__title em{font-style:italic;color:var(--red)}
+    .featured__desc{font-size:var(--t-base);line-height:1.8;color:var(--muted);max-width:460px;margin-bottom:2.5rem}
+    .featured__stats{display:flex;gap:2.5rem;padding-top:2rem;border-top:1px solid rgba(0,0,0,.08)}
+    .stat-num{font-family:var(--ff-d);font-size:2.6rem;font-weight:900;color:var(--red);line-height:1}
+    .stat-label{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:.2rem}
+    .featured__imgs{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:240px 180px;gap:1rem}
+    .f-img{border-radius:var(--rad-lg);overflow:hidden;background:var(--cream-d)}
+    .f-img img{width:100%;height:100%;object-fit:cover;transition:transform .65s ease}
+    .f-img:hover img{transform:scale(1.05)}
+    .f-img:first-child{grid-row:1/3}
+    @media(max-width:768px){.featured__in{grid-template-columns:1fr;gap:3rem}.featured__imgs{grid-template-rows:200px 150px}}
+
+    /* ══════════════════════════════════════════════════════
+       POPULAR ITEMS
+    ══════════════════════════════════════════════════════ */
+    .popular{padding:var(--sp-2xl) 0;background:var(--bg)}
+    .sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;gap:2rem;flex-wrap:wrap}
+    .sec-title{font-family:var(--ff-d);font-size:var(--t-2xl);font-weight:900;line-height:1.15;letter-spacing:-.025em}
+    .sec-title em{font-style:italic;color:var(--yellow)}
+    .items-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(280px,100%),1fr));gap:1.25rem}
+
+    .item-card{background:var(--bg-card);border-radius:var(--rad-lg);overflow:hidden;border:1px solid rgba(245,194,0,.08);transition:all var(--ease-slow)}
+    .item-card:hover{transform:translateY(-5px);box-shadow:0 24px 48px rgba(0,0,0,.45);border-color:rgba(245,194,0,.25)}
+    .item-card__img{height:200px;position:relative;overflow:hidden}
+    .item-card__img img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease}
+    .item-card:hover .item-card__img img{transform:scale(1.08)}
+    .item-card__badge{position:absolute;top:.75rem;left:.75rem;background:var(--red);color:var(--white);font-size:.68rem;font-weight:700;padding:.25rem .65rem;border-radius:var(--rad-full);text-transform:uppercase;letter-spacing:.05em}
+    .item-card__price{position:absolute;bottom:.75rem;right:.75rem;background:var(--yellow);color:var(--espresso);font-weight:800;font-size:.95rem;padding:.35rem .8rem;border-radius:var(--rad-full)}
+    .item-card__body{padding:1.25rem}
+    .item-card__name{font-family:var(--ff-d);font-size:1.1rem;font-weight:700;margin-bottom:.35rem}
+    .item-card__desc{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.55;margin-bottom:1rem}
+    .item-card__foot{display:flex;align-items:center;justify-content:space-between}
+    .add-btn{width:34px;height:34px;border-radius:50%;background:var(--yellow);color:var(--espresso);font-size:1.3rem;font-weight:700;display:flex;align-items:center;justify-content:center;transition:all var(--ease);border:none}
+    .add-btn:hover{background:var(--yellow-d);transform:scale(1.12)}
+
+    .img-elote{background:linear-gradient(135deg,#4a6b1a,#9a8a10)}
+    .img-nachos{background:linear-gradient(135deg,#8a3a1a,#c06a1a)}
+    .img-drink{background:linear-gradient(135deg,#1a3a7a,#1a6a5a)}
+    .img-dessert{background:linear-gradient(135deg,#8a1a4a,#c43a6a)}
+    .img-fruit{background:linear-gradient(135deg,#7a4a1a,#b07030)}
+
+    /* ══════════════════════════════════════════════════════
+       HIGHLIGHT SECTION  (ELOTES big + mascot)
+    ══════════════════════════════════════════════════════ */
+    .highlight{position:relative;overflow:hidden;padding:var(--sp-2xl) 0;background:var(--red)}
+    .highlight::before{content:'';position:absolute;inset:0;
+      background-image:url('img-elote-blanco.jpg');background-size:cover;background-position:center;opacity:.12}
+    /* sunray lines */
+    .highlight::after{content:'';position:absolute;inset:0;
+      background:repeating-conic-gradient(from 0deg at 80% 50%,rgba(255,255,255,.03) 0deg,transparent 10deg,rgba(255,255,255,.03) 20deg);
+      pointer-events:none}
+    .hl-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center}
+    .hl-left{}
+    .hl-word{font-family:var(--ff-d);font-size:clamp(4.5rem,14vw,11rem);font-weight:900;font-style:italic;letter-spacing:-.04em;line-height:.9;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.6);user-select:none;pointer-events:none;margin-bottom:2.5rem}
+    .hl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+    .hl-card{background:rgba(0,0,0,.25);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);border-radius:var(--rad-lg);padding:1.5rem;transition:all var(--ease);cursor:pointer}
+    .hl-card:hover{background:rgba(245,194,0,.15);border-color:rgba(245,194,0,.5);transform:translateY(-3px)}
+    .hl-card__price{font-family:var(--ff-d);font-size:1.9rem;font-weight:900;color:var(--yellow);line-height:1}
+    .hl-card__name{font-size:1rem;font-weight:700;margin:.3rem 0 .5rem}
+    .hl-card__desc{font-size:.75rem;color:rgba(255,255,255,.6);line-height:1.5;margin-bottom:1rem}
+    .hl-card__add{width:30px;height:30px;border-radius:50%;background:rgba(245,194,0,.2);border:1px solid rgba(245,194,0,.4);color:var(--yellow);font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all var(--ease)}
+    .hl-card:hover .hl-card__add{background:var(--yellow);color:var(--espresso)}
+    .hl-mascot{width:clamp(160px,20vw,300px);filter:drop-shadow(0 12px 40px rgba(0,0,0,.4));animation:mascotBounce 3s ease-in-out infinite;flex-shrink:0}
+    @keyframes mascotBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+    @media(max-width:900px){.hl-inner{grid-template-columns:1fr}.hl-mascot{display:none}.hl-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:480px){.hl-grid{grid-template-columns:1fr}}
+
+    /* ══════════════════════════════════════════════════════
+       ABOUT
+    ══════════════════════════════════════════════════════ */
+    .about{padding:var(--sp-2xl) 0;background:var(--cream);color:var(--espresso)}
+    .about__in{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+    .about__imgwrap{position:relative}
+    .about__img{border-radius:var(--rad-xl);overflow:hidden;height:520px}
+    .about__img img{width:100%;height:100%;object-fit:cover}
+    .about__badge{position:absolute;bottom:-1.25rem;right:-1.25rem;width:110px;height:110px;background:var(--red);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--white);border:4px solid var(--cream);text-align:center}
+    .about__badge-n{font-family:var(--ff-d);font-size:2rem;font-weight:900;line-height:1}
+    .about__badge-t{font-size:.58rem;text-transform:uppercase;letter-spacing:.07em;line-height:1.3;opacity:.9}
+    /* mascot beside about text */
+    .about__mascot-mini{width:100px;position:absolute;bottom:0;right:-1.5rem;filter:drop-shadow(0 4px 12px rgba(212,30,30,.3))}
+    .about__title{font-family:var(--ff-d);font-size:var(--t-2xl);font-weight:900;line-height:1.15;letter-spacing:-.025em;margin:1.25rem 0 1.5rem}
+    .about__title em{font-style:italic;color:var(--red)}
+    .about__text{font-size:var(--t-base);line-height:1.8;color:var(--muted);margin-bottom:1.25rem}
+    .about__checks{display:flex;flex-direction:column;gap:.7rem;margin:1.75rem 0 2rem}
+    .about__checks li{display:flex;align-items:center;gap:.65rem;font-size:var(--t-sm);color:var(--muted)}
+    .about__checks li::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+    @media(max-width:768px){.about__in{grid-template-columns:1fr;gap:3rem}.about__img{height:320px}.about__badge{right:.5rem;bottom:-.5rem}.about__mascot-mini{display:none}}
+
+    /* ══════════════════════════════════════════════════════
+       FULL MENU
+    ══════════════════════════════════════════════════════ */
+    .menu-sec{padding:var(--sp-2xl) 0;background:var(--bg-mid)}
+    .menu-tabs{display:flex;gap:.5rem;margin-bottom:3rem;flex-wrap:wrap}
+    .menu-tab{padding:.6rem 1.5rem;border-radius:var(--rad-full);font-size:var(--t-sm);font-weight:700;border:1px solid rgba(245,194,0,.2);color:rgba(255,255,255,.55);background:transparent;transition:all var(--ease)}
+    .menu-tab:hover{border-color:rgba(245,194,0,.5);color:var(--yellow)}
+    .menu-tab.on{background:var(--yellow);color:var(--espresso);border-color:var(--yellow)}
+    .menu-panel{display:none}
+    .menu-panel.on{display:block}
+    .menu-list{display:flex;flex-direction:column}
+    .menu-row{display:flex;align-items:center;gap:1.5rem;padding:1.25rem 0;border-bottom:1px solid rgba(245,194,0,.07);cursor:pointer;transition:padding var(--ease)}
+    .menu-row:hover{padding-left:.625rem}
+    .menu-row:last-child{border-bottom:none}
+    .menu-row__n{font-size:.65rem;color:rgba(255,255,255,.2);font-weight:600;width:22px;flex-shrink:0;text-align:right}
+    .menu-row__info{flex:1}
+    .menu-row__name{font-family:var(--ff-d);font-size:1.05rem;font-weight:700;margin-bottom:.15rem}
+    .menu-row__desc{font-size:.78rem;color:rgba(255,255,255,.4)}
+    .menu-row__dots{flex:1;height:1px;max-width:100px;background:repeating-linear-gradient(to right,rgba(245,194,0,.15) 0,rgba(245,194,0,.15) 4px,transparent 4px,transparent 8px)}
+    .menu-row__price{font-family:var(--ff-d);font-size:1.05rem;font-weight:700;color:var(--yellow);flex-shrink:0}
+    .menu-row__add{width:30px;height:30px;border-radius:50%;background:rgba(245,194,0,.1);border:1px solid rgba(245,194,0,.25);color:var(--yellow);font-size:1rem;display:flex;align-items:center;justify-content:center;transition:all var(--ease);flex-shrink:0}
+    .menu-row:hover .menu-row__add{background:var(--yellow);color:var(--espresso)}
+
+    /* ══════════════════════════════════════════════════════
+       REVIEWS
+    ══════════════════════════════════════════════════════ */
+    .reviews{padding:var(--sp-2xl) 0;background:var(--cream);color:var(--espresso)}
+    .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+    .rev-card{background:var(--white);border-radius:var(--rad-lg);padding:2rem;box-shadow:0 2px 20px rgba(0,0,0,.07);transition:all var(--ease-slow)}
+    .rev-card:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,.1)}
+    .rev-stars{display:flex;gap:.2rem;margin-bottom:1rem;font-size:.95rem;color:var(--yellow-d)}
+    .rev-text{font-size:var(--t-sm);line-height:1.75;color:var(--muted);margin-bottom:1.5rem;font-style:italic}
+    .rev-author{display:flex;align-items:center;gap:.75rem}
+    .rev-av{width:40px;height:40px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:700;font-size:.85rem;flex-shrink:0}
+    .rev-name{font-weight:600;font-size:var(--t-sm)}
+    .rev-src{font-size:.72rem;color:var(--muted)}
+    @media(max-width:800px){.rev-grid{grid-template-columns:1fr}}
+
+    /* ══════════════════════════════════════════════════════
+       ORDER CTA
+    ══════════════════════════════════════════════════════ */
+    .order{padding:var(--sp-2xl) 0;background:var(--bg);position:relative;overflow:hidden}
+    .order::before{content:'';position:absolute;top:-120px;right:-80px;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(245,194,0,.07) 0%,transparent 70%)}
+    .order__in{display:grid;grid-template-columns:1fr 1.15fr;gap:4.5rem;align-items:start}
+    .order__title{font-family:var(--ff-d);font-size:var(--t-2xl);font-weight:900;line-height:1.1;letter-spacing:-.025em;margin:1.25rem 0 1.25rem}
+    .order__title em{font-style:italic;color:var(--yellow)}
+    .order__desc{font-size:var(--t-base);color:rgba(255,255,255,.58);line-height:1.75;margin-bottom:2rem}
+    .contact-list{display:flex;flex-direction:column;gap:1rem}
+    .c-item{display:flex;align-items:center;gap:1rem}
+    .c-icon{width:44px;height:44px;border-radius:var(--rad-md);background:rgba(245,194,0,.08);border:1px solid rgba(245,194,0,.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+    .c-label{font-size:.68rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em}
+    .c-val{font-weight:600;color:var(--white)}
+    /* cta mascot */
+    .order__mascot{width:90px;margin-bottom:1.5rem;filter:drop-shadow(0 4px 16px rgba(245,194,0,.3))}
+    .order__form{background:var(--bg-card);border-radius:var(--rad-xl);padding:2.5rem;border:1px solid rgba(245,194,0,.12)}
+    .order__form h3{font-family:var(--ff-d);font-size:1.4rem;font-weight:700;margin-bottom:1.75rem}
+    .field{margin-bottom:1.25rem}
+    .field label{display:block;font-size:.75rem;font-weight:600;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.45rem}
+    .field input,.field textarea,.field select{width:100%;padding:.875rem 1rem;background:rgba(255,255,255,.05);border:1px solid rgba(245,194,0,.15);border-radius:var(--rad-md);color:var(--white);font-family:var(--ff-b);font-size:var(--t-sm);transition:border-color var(--ease)}
+    .field input::placeholder,.field textarea::placeholder{color:rgba(255,255,255,.3)}
+    .field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:rgba(245,194,0,.55)}
+    .field textarea{resize:vertical;min-height:90px}
+    .field select{cursor:pointer}
+    .field select option{background:var(--bg-mid)}
+    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    @media(max-width:768px){.order__in{grid-template-columns:1fr;gap:3rem}.field-row{grid-template-columns:1fr}}
+
+    /* ══════════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════════ */
+    .footer{background:var(--espresso);padding:4rem 0 1.75rem}
+    .footer__top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(245,194,0,.1);margin-bottom:1.75rem}
+    .footer__brand{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+    .footer__brand-img{width:48px;height:48px;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(245,194,0,.3))}
+    .footer__brand-name{font-family:var(--ff-d);font-size:1.35rem;font-weight:700}
+    .footer__brand-name span{color:var(--yellow)}
+    .footer__tagline{font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.65;max-width:255px;margin-bottom:1.5rem}
+    .f-socials{display:flex;gap:.65rem}
+    .f-soc{width:36px;height:36px;border-radius:var(--rad-sm);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.9rem;transition:all var(--ease)}
+    .f-soc:hover{background:var(--yellow);color:var(--espresso);border-color:var(--yellow)}
+    .f-col-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(245,194,0,.5);margin-bottom:1.15rem}
+    .f-links{display:flex;flex-direction:column;gap:.7rem}
+    .f-links a{font-size:.85rem;color:rgba(255,255,255,.55);transition:color var(--ease)}
+    .f-links a:hover{color:var(--yellow)}
+    .hours-row{display:flex;justify-content:space-between;gap:.75rem;font-size:.82rem;color:rgba(255,255,255,.55);padding:.35rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
+    .hours-row:last-child{border-bottom:none}
+    .hours-row .day{color:rgba(255,255,255,.35)}
+    .footer__bot{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+    .footer__copy{font-size:.72rem;color:rgba(255,255,255,.28)}
+    .footer__copy a{color:var(--yellow)}
+    .footer__by{font-size:.7rem;color:rgba(255,255,255,.2)}
+    @media(max-width:900px){.footer__top{grid-template-columns:1fr 1fr;gap:2rem}}
+    @media(max-width:480px){.footer__top{grid-template-columns:1fr}}
+
+    /* ══════════════════════════════════════════════════════
+       CART SIDEBAR
+    ══════════════════════════════════════════════════════ */
+    .cart-ov{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:300;opacity:0;pointer-events:none;transition:opacity var(--ease-slow)}
+    .cart-ov.on{opacity:1;pointer-events:all}
+    .cart-sb{position:fixed;top:0;right:0;bottom:0;width:400px;max-width:92vw;background:var(--bg-mid);z-index:301;transform:translateX(100%);transition:transform var(--ease-slow);display:flex;flex-direction:column;box-shadow:-8px 0 48px rgba(0,0,0,.5)}
+    .cart-sb.on{transform:translateX(0)}
+    .cart-hd{padding:1.5rem;border-bottom:1px solid rgba(245,194,0,.1);display:flex;justify-content:space-between;align-items:center}
+    .cart-hd h2{font-family:var(--ff-d);font-size:1.3rem;font-weight:700}
+    .cart-close{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.1rem;transition:all var(--ease)}
+    .cart-close:hover{background:rgba(255,255,255,.15)}
+    .cart-items-wrap{flex:1;overflow-y:auto;padding:1.5rem;display:flex;flex-direction:column;gap:1rem}
+    .cart-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;color:rgba(255,255,255,.4);padding:3rem;text-align:center}
+    .cart-empty-ico{font-size:3rem}
+    .c-item-row{display:flex;align-items:center;gap:.85rem;background:rgba(255,255,255,.04);border-radius:var(--rad-md);padding:1rem}
+    .ci-name{font-weight:600;font-size:.9rem;flex:1}
+    .ci-price{color:var(--yellow);font-weight:700;font-size:.9rem}
+    .ci-qty{display:flex;align-items:center;gap:.5rem;font-size:.85rem}
+    .qty-b{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.9rem;transition:all var(--ease);border:none;color:var(--white)}
+    .qty-b:hover{background:var(--yellow);color:var(--espresso)}
+    .cart-ft{padding:1.5rem;border-top:1px solid rgba(245,194,0,.1)}
+    .cart-tot{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.1rem}
+    .cart-tot-lbl{color:rgba(255,255,255,.55);font-size:var(--t-sm)}
+    .cart-tot-p{font-family:var(--ff-d);font-size:1.6rem;font-weight:900;color:var(--yellow)}
+    .wa-btn{width:100%;padding:1rem;background:#25D366;color:#fff;border:none;border-radius:var(--rad-md);font-size:1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.75rem;transition:all var(--ease);margin-bottom:.75rem}
+    .wa-btn:hover{background:#1da851;transform:translateY(-1px)}
+    .wa-btn:disabled{opacity:.38;cursor:not-allowed;transform:none}
+    .call-btn{width:100%;padding:.875rem;background:rgba(212,30,30,.15);border:1px solid rgba(212,30,30,.3);border-radius:var(--rad-md);color:var(--white);font-size:.9rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:.65rem;transition:all var(--ease);text-align:center}
+    .call-btn:hover{background:rgba(212,30,30,.3)}
+
+    /* ── EXQUISITOS badge ─ hero decoration ── */
+    .hero__badge{position:absolute;top:clamp(5.5rem,10vw,7.5rem);right:clamp(1rem,6vw,6rem);z-index:3;background:var(--red);color:var(--white);font-family:var(--ff-d);font-weight:900;font-style:italic;font-size:clamp(.9rem,2vw,1.2rem);padding:.6rem 1.2rem;border-radius:var(--rad-full);border:2px solid var(--yellow);box-shadow:0 4px 20px rgba(212,30,30,.4);white-space:nowrap;letter-spacing:.02em}
+    @media(max-width:768px){.hero__badge{display:none}}
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip">Saltar al contenido principal</a>
+
+  <!-- ══ NAVBAR ══════════════════════════════════════════ -->
+  <nav class="nav" id="navbar" aria-label="Navegación principal">
+    <div class="wrap">
+      <div class="nav__in">
+        <a href="#" class="nav__logo" aria-label="El Super Elote — inicio">
+          <img src="mascot.png" alt="" class="nav__logo-img" aria-hidden="true">
+          <div class="nav__logo-text">El Super<br><span>Elote</span></div>
+        </a>
+
+        <ul class="nav__links" id="navLinks">
+          <li><a href="#menu">Menú</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#resenas">Reseñas</a></li>
+          <li><a href="#ordenar">Ordenar</a></li>
+        </ul>
+
+        <div class="nav__actions">
+          <button class="cart-trigger" id="cartTrigger" aria-label="Ver carrito">
+            🛒 Carrito
+            <span class="cart-badge" id="cartBadge">0</span>
+          </button>
+          <a href="#ordenar" class="btn btn-yellow">¡Ordena Ya!</a>
+        </div>
+
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══ HERO ════════════════════════════════════════════ -->
+  <section class="hero" id="main" aria-labelledby="hero-h">
+    <div class="hero__bg" role="img" aria-label="Comida mexicana vibrante y colorida"></div>
+    <div class="hero__sunburst" aria-hidden="true"></div>
+
+    <!-- floating mascot -->
+    <img src="mascot.png" alt="" class="hero__mascot" aria-hidden="true">
+
+    <!-- top badge -->
+    <div class="hero__badge" aria-hidden="true">⭐ ¡Exquisitos Sabores!</div>
+
+    <div class="wrap">
+      <div class="hero__content">
+        <p class="hero__eyebrow">Bold Flavors! · Plano, TX</p>
+        <h1 id="hero-h" class="hero__title">
+          <em>¡Exquisitos</em><br>
+          <strong>Sabores!</strong>
+        </h1>
+        <p class="hero__sub">
+          Elotes, antojitos y bebidas frescas preparadas al momento con ingredientes naturales.
+          El sabor auténtico de México en Plano, TX.
+        </p>
+        <div class="hero__actions">
+          <button class="btn btn-yellow" id="heroOrderBtn">🌽 Ver Menú & Ordenar</button>
+          <a href="#nosotros" class="btn btn-outline">Conoce Más →</a>
+        </div>
+        <div class="hero__info">
+          <div class="hero__info-item">📍 <strong>1120 E Parker Rd #210, Plano TX</strong></div>
+          <div class="hero__info-item">🕐 <strong>11am – 10pm</strong> · Todos los días</div>
+          <div class="hero__info-item">⭐ <strong>4.8 / 5</strong> · +115 reseñas</div>
+          <div class="hero__info-item">📞 <strong>(972) 905-5679</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <div class="hero__scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ══ RED TICKER ═══════════════════════════════════════ -->
+  <div class="red-banner" aria-hidden="true">
+    <div class="ticker__track">
+      <span class="ticker__item">⭐ <strong>4.8/5</strong> en Yelp</span>
+      <span class="ticker__sep">✦</span>
+      <span class="ticker__item">🌽 Elotes frescos <strong>todos los días</strong></span>
+      <span class="ticker__sep">✦</span>
+      <span class="ticker__item">🥭 Aguas frescas de <strong>fruta natural</strong></span>
+      <span class="ticker__sep">✦</span>
+      <span class="ticker__item">🍦 Postres <strong>artesanales</strong></span>
+      <span class="ticker__sep">✦</span>
+      <span class="ticker__item">📦 Para llevar & <strong>Delivery</strong></span>
+      <span class="ticker__sep">✦</span>
+      <span class="ticker__item">⭐ <strong>4.8/5</strong> en Yelp</span>
+      <span class="ticker__sep">✦</span>
+      <span class="ticker__item">🌽 Elotes frescos <strong>todos los días</strong></span>
+      <span class="ticker__sep">✦</span>
+      <span class="ticker__item">🥭 Aguas frescas de <strong>fruta natural</strong></span>
+      <span class="ticker__sep">✦</span>
+      <span class="ticker__item">🍦 Postres <strong>artesanales</strong></span>
+      <span class="ticker__sep">✦</span>
+      <span class="ticker__item">📦 Para llevar & <strong>Delivery</strong></span>
+    </div>
+  </div>
+
+  <!-- ══ CATEGORIES ══════════════════════════════════════ -->
+  <section class="cats" aria-label="Categorías del menú">
+    <div class="wrap">
+      <div class="cats__grid">
+        <a href="#menu-completo" class="cat-item" onclick="switchTab('elotes')">
+          <div class="cat-item__icon">🌽</div>
+          <div class="cat-item__name">Elotes & Antojitos</div>
+          <div class="cat-item__desc">Mazorca, vaso, esquites, nachos y más preparados al momento</div>
+        </a>
+        <a href="#menu-completo" class="cat-item" onclick="switchTab('bebidas')">
+          <div class="cat-item__icon">🥤</div>
+          <div class="cat-item__name">Bebidas</div>
+          <div class="cat-item__desc">Aguas frescas, horchata, smoothies y jugos naturales</div>
+        </a>
+        <a href="#menu-completo" class="cat-item" onclick="switchTab('postres')">
+          <div class="cat-item__icon">🍦</div>
+          <div class="cat-item__name">Postres</div>
+          <div class="cat-item__desc">Helados, frutillas con crema, flan, waffles y gelato</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FEATURED ════════════════════════════════════════ -->
+  <section class="featured" id="nosotros" aria-labelledby="feat-h">
+    <div class="wrap">
+      <div class="featured__in">
+        <div data-a>
+          <span class="tag tag--light">Nuestra Historia</span>
+          <h2 id="feat-h" class="featured__title">
+            Donde la <em>Excelencia</em><br>
+            Culinaria Encuentra<br>el Corazón Mexicano.
+          </h2>
+          <p class="featured__desc">
+            En El Super Elote llevamos años preparando los antojitos que hacen que la gente vuelva una y otra vez.
+            Ingredientes frescos, recetas auténticas y mucho sabor en cada preparación.
+          </p>
+          <a href="#ordenar" class="btn btn-red">Ordena Ahora →</a>
+          <div class="featured__stats">
+            <div>
+              <div class="stat-num">4.8★</div>
+              <div class="stat-label">Calificación</div>
+            </div>
+            <div>
+              <div class="stat-num">115+</div>
+              <div class="stat-label">Reseñas</div>
+            </div>
+            <div>
+              <div class="stat-num">10+</div>
+              <div class="stat-label">Años de sabor</div>
+            </div>
+          </div>
+        </div>
+        <div class="featured__imgs" data-a data-d="2">
+          <div class="f-img">
+            <img src="img-local.jpg" alt="Interior del local El Super Elote" loading="lazy" width="600" height="400">
+          </div>
+          <div class="f-img">
+            <img src="img-vitrina.jpg" alt="Vitrina con frutas y jugos frescos" loading="lazy" width="600" height="300">
+          </div>
+          <div class="f-img">
+            <img src="img-elote-blanco.jpg" alt="Elote en vaso preparado" loading="lazy" width="600" height="300">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ POPULAR ITEMS ════════════════════════════════════ -->
+  <section class="popular" id="menu" aria-labelledby="pop-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div data-a>
+          <span class="tag">Lo Más Pedido</span>
+          <h2 id="pop-h" class="sec-title" style="margin-top:.75rem">Un Legado de <em>Sabor</em>,<br>Perfeccionado con el Tiempo.</h2>
+        </div>
+        <a href="#menu-completo" class="btn btn-outline" data-a data-d="2">Ver menú completo →</a>
+      </div>
+
+      <div class="items-grid">
+
+        <article class="item-card" data-a data-d="1">
+          <div class="item-card__img">
+            <img src="img-elote-vaso.jpg" alt="Elote en Vaso" loading="lazy" width="600" height="400">
+            <span class="item-card__badge">⭐ Favorito</span>
+            <span class="item-card__price">$4.72</span>
+          </div>
+          <div class="item-card__body">
+            <h3 class="item-card__name">Elote en Vaso</h3>
+            <p class="item-card__desc">Granos tiernos con mantequilla, mayonesa, queso cotija, chile y limón.</p>
+            <div class="item-card__foot">
+              <span style="font-size:.78rem;color:rgba(255,255,255,.4)">Elotes & Antojitos</span>
+              <button class="add-btn" onclick="addToCart('Elote en Vaso',4.72)" aria-label="Agregar Elote en Vaso">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="item-card" data-a data-d="2">
+          <div class="item-card__img">
+            <img src="img-elote-asado.jpg" alt="Elote Asado" loading="lazy" width="600" height="400">
+            <span class="item-card__price">$4.72</span>
+          </div>
+          <div class="item-card__body">
+            <h3 class="item-card__name">Elote Asado</h3>
+            <p class="item-card__desc">Mazorca a la parrilla con nuestros toppings especiales de la casa.</p>
+            <div class="item-card__foot">
+              <span style="font-size:.78rem;color:rgba(255,255,255,.4)">Elotes & Antojitos</span>
+              <button class="add-btn" onclick="addToCart('Elote Asado',4.72)" aria-label="Agregar Elote Asado">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="item-card" data-a data-d="3">
+          <div class="item-card__img">
+            <img src="img-esquites.jpg" alt="Esquites con Queso" loading="lazy" width="600" height="400">
+            <span class="item-card__price">$4.72</span>
+          </div>
+          <div class="item-card__body">
+            <h3 class="item-card__name">Esquites con Queso</h3>
+            <p class="item-card__desc">Granos tiernos bañados en queso fundido, crema y chile al gusto.</p>
+            <div class="item-card__foot">
+              <span style="font-size:.78rem;color:rgba(255,255,255,.4)">Elotes & Antojitos</span>
+              <button class="add-btn" onclick="addToCart('Esquites con Queso',4.72)" aria-label="Agregar Esquites">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="item-card" data-a data-d="4">
+          <div class="item-card__img">
+            <img src="img-mangonada.jpg" alt="Mangonada" loading="lazy" width="600" height="400">
+            <span class="item-card__badge">🏆 #1</span>
+            <span class="item-card__price">$5.00</span>
+          </div>
+          <div class="item-card__body">
+            <h3 class="item-card__name">Mangonada</h3>
+            <p class="item-card__desc">Mango fresco con chamoy, tamarindo y chile. ¡El sabor de México!</p>
+            <div class="item-card__foot">
+              <span style="font-size:.78rem;color:rgba(255,255,255,.4)">Bebidas</span>
+              <button class="add-btn" onclick="addToCart('Mangonada',5.00)" aria-label="Agregar Mangonada">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="item-card" data-a>
+          <div class="item-card__img">
+            <img src="img-elote-grande.jpg" alt="Elote en Vaso Grande" loading="lazy" width="600" height="400">
+            <span class="item-card__price">$4.72</span>
+          </div>
+          <div class="item-card__body">
+            <h3 class="item-card__name">Elote Extra Grande</h3>
+            <p class="item-card__desc">Vaso jumbo con queso rallado, crema y especias. Más elote, más sabor.</p>
+            <div class="item-card__foot">
+              <span style="font-size:.78rem;color:rgba(255,255,255,.4)">Elotes & Antojitos</span>
+              <button class="add-btn" onclick="addToCart('Elote Extra Grande',4.72)" aria-label="Agregar Elote Grande">+</button>
+            </div>
+          </div>
+        </article>
+
+        <article class="item-card" data-a data-d="1">
+          <div class="item-card__img">
+            <img src="img-icecream.jpg" alt="Ice Cream / Helado" loading="lazy" width="600" height="400">
+            <span class="item-card__price">$4.77</span>
+          </div>
+          <div class="item-card__body">
+            <h3 class="item-card__name">Ice Cream</h3>
+            <p class="item-card__desc">Helado artesanal en variedad de sabores cremosos. ¡Fresquito!</p>
+            <div class="item-card__foot">
+              <span style="font-size:.78rem;color:rgba(255,255,255,.4)">Postres</span>
+              <button class="add-btn" onclick="addToCart('Ice Cream',4.77)" aria-label="Agregar Ice Cream">+</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ HIGHLIGHT  (ELOTES + Mascot bouncing) ════════════ -->
+  <section class="highlight" aria-labelledby="hl-h">
+    <div class="wrap hl-inner">
+      <div class="hl-left">
+        <div class="hl-word" aria-hidden="true">Elotes</div>
+        <h2 id="hl-h" class="sr-only">Nuestros Elotes Especiales</h2>
+        <div class="hl-grid">
+          <div class="hl-card" data-a>
+            <div class="hl-card__price">$4.72</div>
+            <div class="hl-card__name">Elote en Vaso</div>
+            <div class="hl-card__desc">El clásico: granos con todos los toppings</div>
+            <button class="hl-card__add" onclick="addToCart('Elote en Vaso',4.72)" aria-label="Agregar">+</button>
+          </div>
+          <div class="hl-card" data-a data-d="1">
+            <div class="hl-card__price">$4.72</div>
+            <div class="hl-card__name">Elote Asado</div>
+            <div class="hl-card__desc">Mazorca a la parrilla con toppings especiales</div>
+            <button class="hl-card__add" onclick="addToCart('Elote Asado',4.72)" aria-label="Agregar">+</button>
+          </div>
+          <div class="hl-card" data-a data-d="2">
+            <div class="hl-card__price">$4.72</div>
+            <div class="hl-card__name">Esquites</div>
+            <div class="hl-card__desc">Granos salteados con epazote, limón y chile</div>
+            <button class="hl-card__add" onclick="addToCart('Esquites',4.72)" aria-label="Agregar">+</button>
+          </div>
+          <div class="hl-card" data-a data-d="3">
+            <div class="hl-card__price">$5.00</div>
+            <div class="hl-card__name">Tostilocos</div>
+            <div class="hl-card__desc">Tostadas, jícama, tamarindo y chamoy</div>
+            <button class="hl-card__add" onclick="addToCart('Tostilocos',5.00)" aria-label="Agregar">+</button>
+          </div>
+        </div>
+      </div>
+      <img src="mascot.png" alt="Mascota El Super Elote" class="hl-mascot">
+    </div>
+  </section>
+
+  <!-- ══ ABOUT ════════════════════════════════════════════ -->
+  <section class="about" aria-labelledby="about-h">
+    <div class="wrap">
+      <div class="about__in">
+        <div class="about__imgwrap" data-a>
+          <div class="about__img">
+            <img src="img-local.jpg" alt="Interior del local El Super Elote en Plano TX" loading="lazy" width="800" height="520">
+          </div>
+          <div class="about__badge" aria-label="Más de 10 años">
+            <span class="about__badge-n">10+</span>
+            <span class="about__badge-t">Años de<br>Sabor</span>
+          </div>
+        </div>
+        <div data-a data-d="2">
+          <span class="tag tag--light">Nuestra Misión</span>
+          <h2 id="about-h" class="about__title">
+            Un Legado de Sabor,<br>
+            <em>Un Futuro de</em><br>Excelencia.
+          </h2>
+          <p class="about__text">
+            El Super Elote nació con una sola misión: traer el auténtico sabor de los antojitos mexicanos a la comunidad de Plano, TX. Cada elote, cada agua fresca y cada postre está preparado con ingredientes frescos y recetas tradicionales.
+          </p>
+          <p class="about__text">
+            Somos más que una tienda de elotes — somos un punto de reunión para quienes buscan ese sabor casero que los transporta al corazón de México.
+          </p>
+          <ul class="about__checks">
+            <li>Ingredientes naturales, sin conservantes artificiales</li>
+            <li>Opciones vegetarianas y veganas disponibles</li>
+            <li>Personal amable y servicio rápido</li>
+            <li>Para llevar, delivery y atención en local</li>
+          </ul>
+          <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap">
+            <a href="#ordenar" class="btn btn-red">Haz tu Pedido →</a>
+            <img src="mascot.png" alt="Mascota El Super Elote" style="width:70px;filter:drop-shadow(0 4px 12px rgba(212,30,30,.3))">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PHOTO GALLERY ════════════════════════════════════ -->
+  <section style="padding:4rem 0;background:var(--bg-mid)" aria-label="Galería del local">
+    <div class="wrap">
+      <div data-a style="margin-bottom:2rem">
+        <span class="tag">Nuestro Local</span>
+        <h2 class="sec-title" style="margin-top:.75rem">El Lugar Donde<br>Nace el <em>Sabor.</em></h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem" data-a data-d="1">
+        <div style="border-radius:var(--rad-lg);overflow:hidden;height:220px">
+          <img src="hero.jpg" alt="Mostrador El Super Elote" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
+        </div>
+        <div style="border-radius:var(--rad-lg);overflow:hidden;height:220px">
+          <img src="img-vitrina.jpg" alt="Vitrina de frutas y jugos" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
+        </div>
+        <div style="border-radius:var(--rad-lg);overflow:hidden;height:220px">
+          <img src="img-helados.jpg" alt="Vitrina de helados artesanales" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
+        </div>
+        <div style="border-radius:var(--rad-lg);overflow:hidden;height:220px">
+          <img src="img-paletas.jpg" alt="Paletas mexicanas" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:.75rem;margin-top:.75rem" data-a data-d="2">
+        <div style="border-radius:var(--rad-lg);overflow:hidden;height:180px">
+          <img src="img-entrada.jpg" alt="Entrada del local" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
+        </div>
+        <div style="border-radius:var(--rad-lg);overflow:hidden;height:180px">
+          <img src="img-elote-grande.jpg" alt="Elote en vaso grande" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
+        </div>
+        <div style="border-radius:var(--rad-lg);overflow:hidden;height:180px">
+          <img src="img-mangonada.jpg" alt="Mangonada" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;object-position:center top" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FULL MENU ═════════════════════════════════════════ -->
+  <section class="menu-sec" id="menu-completo" aria-labelledby="menu-h">
+    <div class="wrap">
+      <div class="sec-head" data-a>
+        <div>
+          <span class="tag">Menú Completo</span>
+          <h2 id="menu-h" class="sec-title" style="margin-top:.75rem">Historias de <em>Sabor</em><br>de Nuestros Clientes.</h2>
+        </div>
+      </div>
+
+      <div class="menu-tabs" role="tablist" data-a>
+        <button class="menu-tab on" role="tab" aria-selected="true" data-panel="tab-elotes" id="btn-elotes">🌽 Elotes & Antojitos</button>
+        <button class="menu-tab" role="tab" aria-selected="false" data-panel="tab-bebidas" id="btn-bebidas">🥤 Bebidas</button>
+        <button class="menu-tab" role="tab" aria-selected="false" data-panel="tab-postres" id="btn-postres">🍦 Postres</button>
+      </div>
+
+      <div class="menu-panel on" id="tab-elotes" role="tabpanel" aria-labelledby="btn-elotes">
+        <div class="menu-list">
+          <div class="menu-row" onclick="addToCart('Elote en Vaso',4.72)">
+            <span class="menu-row__n">01</span>
+            <div class="menu-row__info"><div class="menu-row__name">Elote en Vaso</div><div class="menu-row__desc">Granos tiernos, mantequilla, mayonesa, queso, chile y limón</div></div>
+            <div class="menu-row__dots"></div>
+            <span class="menu-row__price">$4.72</span>
+            <div class="menu-row__add">+</div>
+          </div>
+          <div class="menu-row" onclick="addToCart('Elote Asado',4.72)">
+            <span class="menu-row__n">02</span>
+            <div class="menu-row__info"><div class="menu-row__name">Elote Asado</div><div class="menu-row__desc">Mazorca entera a la parrilla con toppings especiales</div></div>
+            <div class="menu-row__dots"></div>
+            <span class="menu-row__price">$4.72</span>
+            <div class="menu-row__add">+</div>
+          </div>
+          <div class="menu-row" onclick="addToCart('Esquites',4.72)">
+            <span class="menu-row__n">03</span>
+            <div class="menu-row__info"><div class="menu-row__name">Esquites</div><div class="menu-row__desc">Granos salteados con epazote, limón, crema y chile piquín</div></div>
+            <div class="menu-row__dots"></div>
+            <span class="menu-row__price">$4.72</span>
+            <div class="menu-row__add">+</div>
+          </div>
+          <div class="menu-row" onclick="addToCart('Nachos con Queso',3.95)">
+            <span class="menu-row__n">04</span>
+            <div class="menu-row__info"><div class="menu-row__name">Nachos con Queso</div><div class="menu-row__desc">Chips crujientes con queso derretido y jalapeños</div></div>
+            <div class="menu-row__dots"></div>
+            <span class="menu-row__price">$3.95</span>
+            <div class="menu-row__add">+</div>
+          </div>
+          <div class="menu-row" onclick="addToCart('Tostilocos',5.00)">
+            <span class="menu-row__n">05</span>
+            <div class="menu-row__info"><div class="menu-row__name">Tostilocos</div><div class="menu-row__desc">Tostadas, pepino, jícama, tamarindo y chamoy</div></div>
+            <div class="menu-row__dots"></div>
+            <span class="menu-row__price">$5.00</span>
+            <div class="menu-row__add">+</div>
+          </div>
+          <div class="menu-row" onclick="addToCart('Chicharrón Preparado',3.33)">
+            <span class="menu-row__n">06</span>
+            <div class="menu-row__info"><div class="menu-row__name">Chicharrón Preparado</div><div class="menu-row__desc">Chicharrón con limón, salsa verde y chile</div></div>
+            <div class="menu-row__dots"></div>
+            <span class="menu-row__price">$3.33</span>
+            <div class="menu-row__add">+</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="tab-bebidas" role="tabpanel" aria-labelledby="btn-bebidas">
+        <div class="menu-list">
+          <div class="menu-row" onclick="addToCart('Horchata',4.48)">
+            <span class="menu-row__n">01</span>
+            <div class="menu-row__info"><div class="menu-row__name">Horchata</div><div class="menu-row__desc">Agua de arroz con canela y vainilla, endulzada al gusto</div></div>
+            <div class="menu-row__dots"></div>
+            <span class="menu-row__price">$4.48</span>
+            <div class="menu-row__add">+</div>
+          </div>
+          <div class="menu-row" onclick="addToCart('Agua Fresca',4.19)">
+            <span class="menu-row__n">02</span>
+            <div class="menu-row__info"><div class="menu-row__name">Agua Fresca</div><div class="menu-row__desc">Jamaica, tamarindo, limón o de temporada</div></div>
+            <div class="menu-row__dots"></div>
+            <span class="menu-row__price">$4.19</span>
+            <div class="menu-row__add">+</div>
+          </div>
+          <div class="menu-row" onclick="addToCart('Smoothie',4.22)">
+            <span class="menu-row__n">03</span>
+            <div class="menu-row__info"><div class="menu-row__name">Smoothie</div><div class="menu-row__desc">Licuado de frutas naturales sin azúcar añadida</div></div>
+            <div class="menu-row__dots"></div>
+            <span class="menu-row__price">$4.22</span>
+            <div class="menu-row__add">+</div>
+          </div>
+          <div class="menu-row" onclick="addToCart('Jugos Frescos',5.00)">
+            <span class="menu-row__n">04</span>
+            <div class="menu-row__info"><div class="menu-row__name">Jugos Frescos</div><div class="menu-row__desc">Exprimidos al momento con frutas de temporada</div></div>
+            <div class="menu-row__dots"></div>
+            <span class="menu-row__price">$5.00</span>
+            <div class="menu-row__add">+</div>
+          </div>
+          <div class="menu-row" onclick="addToCart('Limonada Natural',3.50)">
+            <span class="menu-row__n">05</span>
+            <div class="menu-row__info"><div class="menu-row__name">Limonada Natural</div><div class="menu-row__desc">Limonada fresca con hierbabuena y tajín</div></div>
+            <div class="menu-row__dots"></div>
+            <span class="menu-row__price">$3.50</span>
+            <div class="menu-row__add">+</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-panel" id="tab-postres" role="tabpanel" aria-labelledby="btn-postres">
+        <div class="menu-list">
+          <div class="menu-row" onclick="addToCart('Ice Cream',4.77)">
+            <span class="menu-row__n">01</span>
+            <div class="menu-row__info"><div class="menu-row__name">Ice Cream</div><div class="menu-row__desc">Helado artesanal en variedad de sabores cremosos</div></div>
+            <div class="menu-row__dots"></div>
+            <span class="menu-row__price">$4.77</span>
+            <div class="menu-row__add">+</div>
+          </div>
+          <div class="menu-row" onclick="addToCart('Frutillas con Crema',5.00)">
+            <span class="menu-row__n">02</span>
+            <div class="menu-row__info"><div class="menu-row__name">Frutillas con Crema</div><div class="menu-row__desc">Fresas frescas con crema y leche condensada</div></div>
+            <div class="menu-row__dots"></div>
+            <span class="menu-row__price">$5.00</span>
+            <div class="menu-row__add">+</div>
+          </div>
+          <div class="menu-row" onclick="addToCart('Gelato',5.00)">
+            <span class="menu-row__n">03</span>
+            <div class="menu-row__info"><div class="menu-row__name">Gelato</div><div class="menu-row__desc">Gelato artesanal en sabores únicos y exóticos</div></div>
+            <div class="menu-row__dots"></div>
+            <span class="menu-row__price">$5.00</span>
+            <div class="menu-row__add">+</div>
+          </div>
+          <div class="menu-row" onclick="addToCart('Flan Casero',5.00)">
+            <span class="menu-row__n">04</span>
+            <div class="menu-row__info"><div class="menu-row__name">Flan Casero</div><div class="menu-row__desc">Flan tradicional con cajeta y nuez</div></div>
+            <div class="menu-row__dots"></div>
+            <span class="menu-row__price">$5.00</span>
+            <div class="menu-row__add">+</div>
+          </div>
+          <div class="menu-row" onclick="addToCart('Waffles',5.00)">
+            <span class="menu-row__n">05</span>
+            <div class="menu-row__info"><div class="menu-row__name">Waffles</div><div class="menu-row__desc">Waffles esponjosos con frutas y crema</div></div>
+            <div class="menu-row__dots"></div>
+            <span class="menu-row__price">$5.00</span>
+            <div class="menu-row__add">+</div>
+          </div>
+          <div class="menu-row" onclick="addToCart('Arroz con Leche',5.00)">
+            <span class="menu-row__n">06</span>
+            <div class="menu-row__info"><div class="menu-row__name">Arroz con Leche</div><div class="menu-row__desc">Postre tradicional con canela y pasas, estilo abuela</div></div>
+            <div class="menu-row__dots"></div>
+            <span class="menu-row__price">$5.00</span>
+            <div class="menu-row__add">+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ REVIEWS ══════════════════════════════════════════ -->
+  <section class="reviews" id="resenas" aria-labelledby="rev-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div data-a>
+          <span class="tag tag--light">Reseñas de Clientes</span>
+          <h2 id="rev-h" class="sec-title" style="margin-top:.75rem;color:var(--espresso)">
+            Historias de <span style="color:var(--red);font-style:italic">Sabor</span><br>de Nuestros Clientes.
+          </h2>
+        </div>
+        <div data-a data-d="2" style="text-align:center">
+          <div style="font-family:var(--ff-d);font-size:3rem;font-weight:900;color:var(--red);line-height:1">4.8</div>
+          <div style="color:var(--yellow-d);font-size:1.1rem;margin:.25rem 0">★★★★★</div>
+          <div style="font-size:.8rem;color:var(--muted)">+115 reseñas en Yelp</div>
+        </div>
+      </div>
+
+      <div class="rev-grid">
+        <div class="rev-card" data-a>
+          <div class="rev-stars" aria-label="5 estrellas">★★★★★</div>
+          <p class="rev-text">"El mejor elote que he probado en Plano. El personal es súper amable y las porciones son muy generosas. ¡Me regreso cada semana!"</p>
+          <div class="rev-author">
+            <div class="rev-av">MG</div>
+            <div><div class="rev-name">Maria G.</div><div class="rev-src">Yelp · Febrero 2024</div></div>
+          </div>
+        </div>
+        <div class="rev-card" data-a data-d="1">
+          <div class="rev-stars" aria-label="5 estrellas">★★★★★</div>
+          <p class="rev-text">"Las aguas frescas están hechas con fruta de verdad, se nota la diferencia. La horchata es increíble. El mejor lugar de la zona."</p>
+          <div class="rev-author">
+            <div class="rev-av">CM</div>
+            <div><div class="rev-name">Carlos M.</div><div class="rev-src">Yelp · Enero 2024</div></div>
+          </div>
+        </div>
+        <div class="rev-card" data-a data-d="2">
+          <div class="rev-stars" aria-label="5 estrellas">★★★★★</div>
+          <p class="rev-text">"Los nachos con queso son perfectos. El servicio es rápido y el ambiente muy agradable. ¡Lo recomiendo a todos mis amigos!"</p>
+          <div class="rev-author">
+            <div class="rev-av">JR</div>
+            <div><div class="rev-name">Jennifer R.</div><div class="rev-src">Google · Diciembre 2023</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ORDER CTA ═════════════════════════════════════════ -->
+  <section class="order" id="ordenar" aria-labelledby="order-h">
+    <div class="wrap">
+      <div class="order__in">
+        <div data-a>
+          <img src="mascot.png" alt="" class="order__mascot" aria-hidden="true">
+          <span class="tag">¡Ordena Ahora!</span>
+          <h2 id="order-h" class="order__title">Tu Antojo <em>te Espera.</em><br>Ordena Fácil y Rápido.</h2>
+          <p class="order__desc">
+            Arma tu pedido desde aquí y envíanoslo por WhatsApp. También puedes llamarnos o visitarnos en el local.
+          </p>
+          <div class="contact-list">
+            <div class="c-item">
+              <div class="c-icon">📍</div>
+              <div><div class="c-label">Ubicación</div><div class="c-val">1120 E Parker Rd #210, Plano, TX 75074</div></div>
+            </div>
+            <div class="c-item">
+              <div class="c-icon">📞</div>
+              <div><div class="c-label">Teléfono</div><div class="c-val"><a href="tel:+19729055679" style="color:var(--yellow)">(972) 905-5679</a></div></div>
+            </div>
+            <div class="c-item">
+              <div class="c-icon">🕐</div>
+              <div><div class="c-label">Horario</div><div class="c-val">Lunes – Domingo · 11:00 AM – 10:00 PM</div></div>
+            </div>
+            <div class="c-item">
+              <div class="c-icon">📦</div>
+              <div><div class="c-label">Servicio</div><div class="c-val">Para llevar · Delivery · En local</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="order__form" data-a data-d="2">
+          <h3>🌽 Envíanos tu Pedido</h3>
+          <div class="field-row">
+            <div class="field">
+              <label for="f-name">Tu Nombre</label>
+              <input type="text" id="f-name" placeholder="Ej: María González" autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="f-phone">Teléfono</label>
+              <input type="tel" id="f-phone" placeholder="(XXX) XXX-XXXX" autocomplete="tel">
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-type">Tipo de Pedido</label>
+            <select id="f-type">
+              <option value="llevar">Para llevar</option>
+              <option value="delivery">Delivery</option>
+              <option value="local">Comer en el local</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-order">¿Qué deseas ordenar?</label>
+            <textarea id="f-order" placeholder="Ej: 2 Elotes en Vaso, 1 Horchata, 1 Ice Cream..."></textarea>
+          </div>
+          <button class="wa-btn" onclick="sendCustomWhatsApp()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enviar por WhatsApp
+          </button>
+          <a href="tel:+19729055679" class="call-btn">📞 Llamar: (972) 905-5679</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="wrap">
+      <div class="footer__top">
+        <div>
+          <div class="footer__brand">
+            <img src="mascot.png" alt="" class="footer__brand-img" aria-hidden="true">
+            <div class="footer__brand-name">El Super <span>Elote</span></div>
+          </div>
+          <p class="footer__tagline">¡Exquisitos Sabores! Antojitos mexicanos auténticos en Plano, TX. Bold Flavors every day.</p>
+          <div class="f-socials">
+            <a href="https://www.facebook.com/SuperElote" target="_blank" rel="noopener" class="f-soc" aria-label="Facebook">f</a>
+            <a href="https://www.yelp.com/biz/el-super-elote-plano-2" target="_blank" rel="noopener" class="f-soc" aria-label="Yelp">y</a>
+            <a href="tel:+19729055679" class="f-soc" aria-label="Llamar">📞</a>
+          </div>
+        </div>
+        <div>
+          <div class="f-col-title">Menú</div>
+          <div class="f-links">
+            <a href="#menu-completo" onclick="switchTab('elotes')">Elotes & Antojitos</a>
+            <a href="#menu-completo" onclick="switchTab('bebidas')">Bebidas</a>
+            <a href="#menu-completo" onclick="switchTab('postres')">Postres</a>
+            <a href="#" onclick="openCart()">Ordenar Ahora</a>
+          </div>
+        </div>
+        <div>
+          <div class="f-col-title">Visítanos</div>
+          <div class="f-links">
+            <a href="https://maps.google.com/?q=1120+E+Parker+Rd+Plano+TX" target="_blank" rel="noopener">1120 E Parker Rd #210</a>
+            <a href="https://maps.google.com/?q=1120+E+Parker+Rd+Plano+TX" target="_blank" rel="noopener">Plano, TX 75074</a>
+            <a href="tel:+19729055679">(972) 905-5679</a>
+            <a href="https://www.yelp.com/biz/el-super-elote-plano-2" target="_blank" rel="noopener">Ver en Yelp ↗</a>
+          </div>
+        </div>
+        <div>
+          <div class="f-col-title">Horario</div>
+          <div class="footer__hours">
+            <div class="hours-row"><span class="day">Lun – Vie</span><span>11am – 10pm</span></div>
+            <div class="hours-row"><span class="day">Sábado</span><span>11am – 10pm</span></div>
+            <div class="hours-row"><span class="day">Domingo</span><span>11am – 10pm</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bot">
+        <p class="footer__copy">© 2025 El Super Elote · Plano, TX · Sitio por <a href="#">Shiftera Digital</a></p>
+        <p class="footer__by">¡Exquisitos Sabores! · Bold Flavors!</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══ CART SIDEBAR ══════════════════════════════════════ -->
+  <div class="cart-ov" id="cartOverlay" onclick="closeCart()" aria-hidden="true"></div>
+  <aside class="cart-sb" id="cartSidebar" aria-label="Carrito de pedido">
+    <div class="cart-hd">
+      <h2>Tu Pedido 🌽</h2>
+      <button class="cart-close" onclick="closeCart()" aria-label="Cerrar carrito">✕</button>
+    </div>
+    <div class="cart-items-wrap" id="cartItemsWrap">
+      <div class="cart-empty">
+        <div class="cart-empty-ico">🌽</div>
+        <p>Tu carrito está vacío.<br>¡Agrega tus antojitos!</p>
+      </div>
+    </div>
+    <div class="cart-ft">
+      <div class="cart-tot">
+        <span class="cart-tot-lbl">Total del pedido</span>
+        <span class="cart-tot-p" id="cartTotal">$0.00</span>
+      </div>
+      <button class="wa-btn" id="waSendBtn" onclick="sendCartWhatsApp()" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Ordenar por WhatsApp
+      </button>
+      <a href="tel:+19729055679" class="call-btn">📞 Llamar al local</a>
+    </div>
+  </aside>
+
+  <script>
+    /* ── CART ───────────────────────────────────────────── */
+    const cart = [];
+
+    function addToCart(name, price) {
+      const ex = cart.find(i => i.name === name);
+      if (ex) { ex.qty++; } else { cart.push({ name, price, qty: 1 }); }
+      renderCart();
+      openCart();
+    }
+
+    function changeQty(name, delta) {
+      const i = cart.find(x => x.name === name);
+      if (!i) return;
+      i.qty += delta;
+      if (i.qty <= 0) cart.splice(cart.indexOf(i), 1);
+      renderCart();
+    }
+
+    function renderCart() {
+      const wrap  = document.getElementById('cartItemsWrap');
+      const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      const count = cart.reduce((s, i) => s + i.qty, 0);
+
+      document.getElementById('cartBadge').textContent = count;
+      document.getElementById('cartTotal').textContent  = '$' + total.toFixed(2);
+      document.getElementById('waSendBtn').disabled      = cart.length === 0;
+
+      if (cart.length === 0) {
+        wrap.innerHTML = '<div class="cart-empty"><div class="cart-empty-ico">🌽</div><p>Tu carrito está vacío.<br>¡Agrega tus antojitos!</p></div>';
+        return;
+      }
+      wrap.innerHTML = cart.map(i => `
+        <div class="c-item-row">
+          <div class="ci-name">${i.name}</div>
+          <div class="ci-qty">
+            <button class="qty-b" onclick="changeQty('${i.name}',-1)" aria-label="Quitar">−</button>
+            <span>${i.qty}</span>
+            <button class="qty-b" onclick="changeQty('${i.name}',1)" aria-label="Agregar">+</button>
+          </div>
+          <div class="ci-price">$${(i.price * i.qty).toFixed(2)}</div>
+        </div>
+      `).join('');
+    }
+
+    function sendCartWhatsApp() {
+      if (!cart.length) return;
+      const lines = cart.map(i => `• ${i.qty}x ${i.name} — $${(i.price * i.qty).toFixed(2)}`).join('\n');
+      const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      const msg   = `¡Hola El Super Elote! 🌽\n\nMe gustaría ordenar:\n\n${lines}\n\n*Total: $${total.toFixed(2)}*\n\nNombre: \nTipo: Para llevar / Delivery`;
+      window.open('https://wa.me/19729055679?text=' + encodeURIComponent(msg), '_blank');
+    }
+
+    function sendCustomWhatsApp() {
+      const name  = document.getElementById('f-name').value.trim();
+      const phone = document.getElementById('f-phone').value.trim();
+      const type  = document.getElementById('f-type').value;
+      const order = document.getElementById('f-order').value.trim();
+      if (!order) { alert('Por favor describe tu pedido.'); return; }
+      const tipos = { llevar:'Para llevar', delivery:'Delivery', local:'Comer en el local' };
+      const msg   = `¡Hola El Super Elote! 🌽\n\nNombre: ${name||'Sin especificar'}\nTeléfono: ${phone||'Sin especificar'}\nTipo: ${tipos[type]}\n\nPedido:\n${order}`;
+      window.open('https://wa.me/19729055679?text=' + encodeURIComponent(msg), '_blank');
+    }
+
+    /* ── CART SIDEBAR ───────────────────────────────────── */
+    function openCart() {
+      document.getElementById('cartOverlay').classList.add('on');
+      document.getElementById('cartSidebar').classList.add('on');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeCart() {
+      document.getElementById('cartOverlay').classList.remove('on');
+      document.getElementById('cartSidebar').classList.remove('on');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('cartTrigger').addEventListener('click', openCart);
+    document.getElementById('heroOrderBtn').addEventListener('click', () => {
+      document.getElementById('menu').scrollIntoView({ behavior:'smooth' });
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeCart();
+        if (navLinks.classList.contains('open')) {
+          navLinks.classList.remove('open');
+          hamburger.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          navbar.classList.remove('open');
+          document.body.style.overflow = '';
+          hamburger.focus();
+        }
+      }
+    });
+
+    /* ── NAVBAR SCROLL ──────────────────────────────────── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    /* ── MOBILE MENU ────────────────────────────────────── */
+    const hamburger = document.getElementById('hamburger');
+    const navLinks  = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+      navbar.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded','false');
+        navbar.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+
+    /* ── MENU TABS ──────────────────────────────────────── */
+    function switchTab(id) {
+      document.querySelectorAll('.menu-tab').forEach(t => {
+        const on = t.dataset.panel === 'tab-' + id;
+        t.classList.toggle('on', on);
+        t.setAttribute('aria-selected', on);
+      });
+      document.querySelectorAll('.menu-panel').forEach(p => {
+        p.classList.toggle('on', p.id === 'tab-' + id);
+      });
+      document.getElementById('menu-completo').scrollIntoView({ behavior:'smooth', block:'start' });
+    }
+    document.querySelectorAll('.menu-tab').forEach(tab => {
+      tab.addEventListener('click', () => switchTab(tab.dataset.panel.replace('tab-','')));
+    });
+
+    /* ── SCROLL ANIMATIONS ──────────────────────────────── */
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('[data-a]').forEach(el => obs.observe(el));
+
+    /* ── HERO PARALLAX ──────────────────────────────────── */
+    const heroBg = document.querySelector('.hero__bg');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < window.innerHeight) {
+        heroBg.style.transform = `scale(1.04) translateY(${window.scrollY * 0.12}px)`;
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>
